@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interactive Maps - Digital Transformation Study</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        h1 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px; }
+        h2 { color: #34495e; margin-top: 30px; }
+        .map-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .map-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        .map-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .map-card a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .map-card a:hover { color: #2980b9; }
+        .map-card p { color: #7f8c8d; margin: 10px 0 0 0; }
+    </style>
+</head>
+<body>
+    <h1>Interactive Geographic Visualizations</h1>
+    <p style="color: #7f8c8d; font-size: 16px;">
+        Explore US economic indicators through interactive maps.
+    </p>
+
+    <h2>Single Indicator Maps</h2>
+    <div class="map-grid">
+        <div class="map-card">
+            <a href="interactive_digital_adoption.html">Digital Adoption Rates</a>
+            <p>Explore digital technology adoption rates across US states</p>
+        </div>
+        <div class="map-card">
+            <a href="interactive_gdp_per_capita.html">GDP per Capita</a>
+            <p>View economic output per capita by state</p>
+        </div>
+    </div>
+
+    <h2>Multi-Layer Maps</h2>
+    <div class="map-grid">
+        <div class="map-card">
+            <a href="interactive_multi_indicators.html">Multiple Economic Indicators</a>
+            <p>Toggle between different economic indicators</p>
+        </div>
+        <div class="map-card">
+            <a href="interactive_firm_locations.html">Firm Locations & Clusters</a>
+            <p>View firm headquarters with adoption status</p>
+        </div>
+    </div>
+
+    <p style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd; color: #7f8c8d;">
+        Created with Python, GeoPandas, and Folium
+    </p>
+</body>
+</html>
