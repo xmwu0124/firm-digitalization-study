@@ -1,0 +1,68 @@
+# Project Configuration
+# Digital Transformation & Capital Accumulation Study
+
+project:
+  name: "digital_transformation_study"
+  version: "1.0.0"
+  author: "Research Team"
+  
+paths:
+  data_raw: "data/raw"
+  data_processed: "data/processed"
+  output: "output"
+  figures: "output/figures"
+  tables: "output/tables"
+  maps: "output/maps"
+  logs: "logs"
+
+data:
+  # Synthetic data generation parameters
+  n_firms: 200
+  n_years: 10
+  start_year: 2010
+  end_year: 2019
+  
+  # Treatment parameters
+  adoption_start_year: 2015
+  adoption_end_year: 2018
+  tech_industry_adoption_rate: 0.7
+  other_industry_adoption_rate: 0.3
+  
+  # Geographic bounds (US)
+  lat_min: 25
+  lat_max: 49
+  lon_min: -125
+  lon_max: -65
+
+analysis:
+  # DiD settings
+  event_window_pre: -3
+  event_window_post: 5
+  confidence_level: 0.95
+  cluster_var: "gvkey"
+  
+  # Spatial analysis
+  spatial_cutoff_km: 50
+  spatial_weight_type: "inverse_distance"
+  
+  # Bayesian estimation
+  mcmc_warmup: 2000
+  mcmc_samples: 1000
+  seed: 42
+  
+  # Discrete choice
+  choice_max_iter: 2000
+  choice_gtol: 1.0e-8
+
+outputs:
+  # Figure settings
+  figure_dpi: 300
+  figure_format: "png"
+  
+  # Table settings
+  table_format: "csv"
+  decimal_places: 4
+  
+  # Results
+  save_intermediate: true
+  save_posteriors: true

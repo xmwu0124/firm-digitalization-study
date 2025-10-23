@@ -1,0 +1,11 @@
+Parameter,Estimate,Std_Error,T_Stat
+alpha_size (benefit of size),0.0000,,
+alpha_comp (benefit of low competition),0.3000,,
+alpha_tech (tech industry premium),0.0000,,
+fc_adopt (fixed cost adoption),10.0000,,
+fc_maintain (maintenance cost),2.0000,,
+beta (discount factor),0.9000,,
+delta (depreciation),0.1500,,
+gamma_size (size persistence),0.9000,,
+sigma_size (size shock std),0.2000,,
+scale (logit scale),1.0000,,

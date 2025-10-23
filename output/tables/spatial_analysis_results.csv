@@ -1,0 +1,2 @@
+total_firms,adopters,adoption_rate,geographic_spread_lat,geographic_spread_lon,cv_latitude,cv_longitude,adopter_lat_mean,adopter_lon_mean,non_adopter_lat_mean,non_adopter_lon_mean,avg_adopter_distance,avg_mixed_distance,clustering_ratio
+200,87,0.435,6.2212078742321255,18.063121534888268,0.1618278571375347,0.1911048465843169,38.80952719724913,-101.45529084518897,38.16145792704648,-89.17943432727735,23.32405482929775,24.534707459306595,0.9506555098724189

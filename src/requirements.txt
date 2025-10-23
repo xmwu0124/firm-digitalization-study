@@ -1,0 +1,25 @@
+# Core dependencies
+pandas>=2.0.0
+numpy>=1.24.0
+matplotlib>=3.7.0
+scipy>=1.11.0
+
+# Geospatial
+rasterio>=1.3.0
+
+# Econometrics
+pyfixest>=0.18.0
+
+# Machine Learning
+scikit-learn>=1.3.0
+
+# Natural Language Processing
+nltk>=3.8.0
+
+# Configuration
+PyYAML>=6.0
+
+# Optional: Spatial Analysis
+# Uncomment if using spatial statistics features
+# libpysal>=4.9.0
+# esda>=2.5.0

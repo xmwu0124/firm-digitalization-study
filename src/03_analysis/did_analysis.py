@@ -1,0 +1,353 @@
+"""
+Difference-in-Differences Analysis
+Adapted from codesample_v1.py DiD module
+
+Implements:
+1. Event study with binned endpoints
+2. Sun & Abraham (2021) heterogeneity-robust estimator
+3. Two-way fixed effects baseline
+"""
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from pathlib import Path
+import sys
+
+sys.path.append(str(Path(__file__).resolve().parent.parent))
+from config_loader import CONFIG, PATHS, setup_logger
+
+logger = setup_logger("did_analysis")
+
+try:
+    import pyfixest as pf
+    HAS_PYFIXEST = True
+except ImportError:
+    logger.warning("pyfixest not available, using statsmodels fallback")
+    HAS_PYFIXEST = False
+    import statsmodels.formula.api as smf
+
+def load_panel():
+    """Load panel data"""
+    panel_path = PATHS['data_processed'] / 'firm_panel.csv'
+    logger.info(f"Loading panel from: {panel_path}")
+    panel = pd.read_csv(panel_path)
+    return panel
+
+def prepare_did_data(panel: pd.DataFrame) -> pd.DataFrame:
+    """
+    Prepare data for DiD estimation
+    
+    Creates event-time dummies and bins endpoints
+    """
+    logger.info("\nPreparing DiD data...")
+    
+    df = panel.copy()
+    
+    # Event time relative to treatment
+    df['event_time'] = df['year'] - df['digital_year']
+    
+    # Bin endpoints
+    event_min = CONFIG['analysis']['event_window_pre']
+    event_max = CONFIG['analysis']['event_window_post']
+    
+    df['event_time_binned'] = df['event_time'].clip(event_min, event_max)
+    
+    # Create event-time dummies (omit -1 as reference period)
+    for t in range(event_min, event_max + 1):
+        if t != -1:
+            var_name = f'event_m{abs(t)}' if t < 0 else f'event_{t}'
+            df[var_name] = (df["event_time_binned"] == t).astype(int)
+    
+    # Never-treated indicator
+    df['never_treated'] = df['digital_year'].isna().astype(int)
+    
+    logger.info(f"  Event window: [{event_min}, {event_max}]")
+    logger.info(f"  Reference period: t = -1")
+    logger.info(f"  Never-treated firms: {df['never_treated'].max()}")
+    
+    return df
+
+def event_study_regression(df: pd.DataFrame, outcome: str = 'log_revenue') -> dict:
+    # DEBUG: Check columns
+    event_cols = [c for c in df.columns if c.startswith("event_")]
+    logger.info(f"Event columns in df: {event_cols[:5]}...")
+    """
+    Run event study regression
+    
+    Specification:
+    y_it = α_i + λ_t + Σ_k β_k * 1{event_time==k} + ε_it
+    """
+    logger.info(f"\nRunning event study for outcome: {outcome}")
+    
+    # Build formula
+    event_min = CONFIG['analysis']['event_window_pre']
+    event_max = CONFIG['analysis']['event_window_post']
+    
+    event_vars = [f"event_m{abs(t)}" if t < 0 else f"event_{t}" for t in range(event_min, event_max + 1) if t != -1]
+    
+    if HAS_PYFIXEST:
+        # Use pyfixest for fast estimation
+        formula = f"{outcome} ~ {' + '.join(event_vars)} | gvkey + year"
+        
+        model = pf.feols(formula, data=df, vcov={'CRV1': 'gvkey'})
+        
+        # Extract coefficients
+        coef_df = model.tidy().reset_index()
+        if "index" in coef_df.columns:
+            coef_df.rename(columns={"index": "variable"}, inplace=True)
+        logger.info(f"DEBUG: After reset - columns: {coef_df.columns.tolist()}")
+        logger.info(f"DEBUG: Variables: {coef_df.iloc[:, 0].tolist()}")
+        logger.info(f"DEBUG: coef_df columns: {coef_df.columns.tolist()}")
+        logger.info(f"DEBUG: coef_df shape: {coef_df.shape}")
+        logger.info(f"DEBUG: First column values: {coef_df.iloc[:, 0].tolist()}")
+        
+        results = {
+            'coefficients': {},
+            'se': {},
+            'ci_lower': {},
+            'ci_upper': {},
+            'model_summary': model.summary()
+        }
+        
+        for var in event_vars:
+            logger.info(f"DEBUG: Processing var={var}, total vars={len(event_vars)}")
+            logger.info(f"DEBUG: Processing var={var}, total vars={len(event_vars)}")
+            # Parse event time from variable name
+            time_str = var.split("_")[1]
+            if time_str.startswith("m"):
+                t = -int(time_str[1:])  # m3 -> -3
+            else:
+                t = int(time_str)  # 2 -> 2
+            row = coef_df[coef_df.iloc[:, 0] == var]
+            logger.info(f"DEBUG: Found {len(row)} rows for {var}")
+            if len(row) > 0:
+                logger.info(f"DEBUG: Row data: {row.iloc[0].to_dict()}")
+            logger.info(f"DEBUG: Found {len(row)} rows for {var}")
+            if len(row) > 0:
+                logger.info(f"DEBUG: Row data: {row.iloc[0].to_dict()}")
+            if len(row) > 0:
+                results['coefficients'][t] = float(row['Estimate'].iloc[0])
+                results['se'][t] = float(row['Std. Error'].iloc[0])
+                results['ci_lower'][t] = float(row['2.5%'].iloc[0] if '2.5%' in row.columns else row['Estimate'].iloc[0] - 1.96*row['Std. Error'].iloc[0])
+                results['ci_upper'][t] = float(row['97.5%'].iloc[0] if '97.5%' in row.columns else row['Estimate'].iloc[0] + 1.96*row['Std. Error'].iloc[0])
+    
+    else:
+        # Fallback to statsmodels
+        formula = f"{outcome} ~ {' + '.join(event_vars)} + C(gvkey) + C(year)"
+        model = smf.ols(formula, data=df).fit(cov_type='cluster', cov_kwds={'groups': df['gvkey']})
+        
+        results = {
+            'coefficients': {},
+            'se': {},
+            'ci_lower': {},
+            'ci_upper': {},
+            'model_summary': model.summary()
+        }
+        
+        for var in event_vars:
+            logger.info(f"DEBUG: Processing var={var}, total vars={len(event_vars)}")
+            logger.info(f"DEBUG: Processing var={var}, total vars={len(event_vars)}")
+            # Parse event time from variable name
+            time_str = var.split("_")[1]
+            if time_str.startswith("m"):
+                t = -int(time_str[1:])  # m3 -> -3
+            else:
+                t = int(time_str)  # 2 -> 2
+            if var in model.params.index:
+                results['coefficients'][t] = float(model.params[var])
+                results['se'][t] = float(model.bse[var])
+                ci = model.conf_int().loc[var]
+                results['ci_lower'][t] = float(ci[0])
+                results['ci_upper'][t] = float(ci[1])
+    
+    # Add reference period (coef = 0 by construction)
+    results['coefficients'][-1] = 0.0
+    results['se'][-1] = 0.0
+    results['ci_lower'][-1] = 0.0
+    results['ci_upper'][-1] = 0.0
+    
+    # Pre-trend test (joint F-test on pre-period coefficients)
+    pre_periods = [t for t in results['coefficients'].keys() if t < 0]
+    pre_coefs = [results['coefficients'][t] for t in pre_periods if t != -1]
+    
+    if len(pre_coefs) > 0:
+        # Simple t-test on average pre-treatment coefficient
+        avg_pre = np.mean(pre_coefs)
+        se_pre = np.std(pre_coefs) / np.sqrt(len(pre_coefs))
+        t_stat = avg_pre / se_pre if se_pre > 0 else 0
+        p_value = 2 * (1 - stats.t.cdf(abs(t_stat), len(pre_coefs) - 1)) if len(pre_coefs) > 1 else 1.0
+        
+        results['pre_trend_test'] = {
+            'avg_coef': avg_pre,
+            'se': se_pre,
+            't_stat': t_stat,
+            'p_value': p_value
+        }
+    
+    # Average treatment effect (post-period)
+    post_periods = [t for t in results['coefficients'].keys() if t >= 0]
+    post_coefs = [results['coefficients'][t] for t in post_periods]
+    results['avg_treatment_effect'] = np.mean(post_coefs) if len(post_coefs) > 0 else np.nan
+    
+    logger.info(f"  Average treatment effect: {results['avg_treatment_effect']:.4f}")
+    if 'pre_trend_test' in results:
+        logger.info(f"  Pre-trend test p-value: {results['pre_trend_test']['p_value']:.3f}")
+    
+    return results
+
+def plot_event_study(results: dict, outcome: str, save_path: Path = None):
+    """Create event study plot"""
+    logger.info("\nCreating event study plot...")
+    
+    # Extract data for plotting
+    periods = sorted(results['coefficients'].keys())
+    coefs = [results['coefficients'][t] for t in periods]
+    ci_lower = [results['ci_lower'][t] for t in periods]
+    ci_upper = [results['ci_upper'][t] for t in periods]
+    
+    fig, ax = plt.subplots(figsize=(12, 7))
+    
+    # Plot coefficients
+    ax.plot(periods, coefs, 'o-', color='#2E86AB', linewidth=2, markersize=8, label='Point Estimate')
+    
+    # Plot confidence intervals
+    ax.fill_between(periods, ci_lower, ci_upper, alpha=0.2, color='#2E86AB', label='95% CI')
+    
+    # Add zero line
+    ax.axhline(y=0, color='black', linestyle='--', linewidth=1, alpha=0.5)
+    
+    # Add vertical line at treatment
+    ax.axvline(x=-0.5, color='red', linestyle='--', linewidth=1.5, alpha=0.7, label='Treatment')
+    
+    # Styling
+    ax.set_xlabel('Years Relative to Digital Adoption', fontsize=12)
+    ax.set_ylabel(f'Effect on {outcome}', fontsize=12)
+    ax.set_title('Event Study: Digital Transformation Impact', fontsize=14, fontweight='bold')
+    ax.legend(fontsize=10)
+    ax.grid(True, alpha=0.3)
+    
+    # Add pre-trend test result
+    if 'pre_trend_test' in results:
+        p_val = results['pre_trend_test']['p_value']
+        status = "✓ Passed" if p_val > 0.05 else "✗ Failed"
+        ax.text(0.02, 0.98, f'Pre-trend test: p={p_val:.3f} {status}',
+                transform=ax.transAxes, fontsize=10,
+                verticalalignment='top',
+                bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5))
+    
+    plt.tight_layout()
+    
+    if save_path is None:
+        save_path = PATHS['figures'] / f'event_study_{outcome}.png'
+    
+    plt.savefig(save_path, dpi=CONFIG['outputs']['figure_dpi'], bbox_inches='tight')
+    plt.close()
+    
+    logger.info(f"✓ Saved event study plot to: {save_path}")
+
+def twfe_baseline(df: pd.DataFrame, outcome: str = 'log_revenue') -> dict:
+    """
+    Two-way fixed effects baseline
+    
+    y_it = α_i + λ_t + β * Treated_it + ε_it
+    """
+    logger.info(f"\nRunning TWFE baseline for: {outcome}")
+    
+    if HAS_PYFIXEST:
+        formula = f"{outcome} ~ treated | gvkey + year"
+        model = pf.feols(formula, data=df, vcov={'CRV1': 'gvkey'})
+        
+        results = {
+            'coef': float(model.coef().iloc[0]),
+            'se': float(model.se().iloc[0]),
+            'tstat': float(model.tstat().iloc[0]),
+            'pvalue': float(model.pvalue().iloc[0]),
+            'ci': [float(model.confint().iloc[0, 0]), float(model.confint().iloc[0, 1])],
+            'n_obs': getattr(model, '_N', getattr(model, 'nobs', len(df))),
+            'r_squared': float(getattr(model, 'r2', getattr(model, 'r_squared', getattr(model, 'rsquared', 0.0))))
+        }
+    else:
+        formula = f"{outcome} ~ treated + C(gvkey) + C(year)"
+        model = smf.ols(formula, data=df).fit(cov_type='cluster', cov_kwds={'groups': df['gvkey']})
+        
+        results = {
+            'coef': float(model.params['treated']),
+            'se': float(model.bse['treated']),
+            'tstat': float(model.tvalues['treated']),
+            'pvalue': float(model.pvalues['treated']),
+            'ci': list(model.conf_int().loc['treated'].values),
+            'n_obs': getattr(model, '_N', getattr(model, 'nobs', len(df))),
+            'r_squared': float(getattr(model, 'rsquared', getattr(model, 'r_squared', getattr(model, 'r2', 0.0))))
+        }
+    
+    logger.info(f"  Coefficient: {results['coef']:.4f} (SE: {results['se']:.4f})")
+    logger.info(f"  p-value: {results['pvalue']:.3f}")
+    
+    return results
+
+def run_did_analysis():
+    """Run complete DiD analysis"""
+    logger.info("="*70)
+    logger.info("DIFFERENCE-IN-DIFFERENCES ANALYSIS")
+    logger.info("="*70)
+    
+    # Load and prep data
+    panel = load_panel()
+    df = prepare_did_data(panel)
+    
+    logger.info(f"\nAnalysis sample: {len(df):,} observations")
+    logger.info(f"Treated observations: {df['treated'].sum():,} ({df['treated'].mean():.1%})")
+    
+    # Event study
+    # Prepare data for DiD analysis
+    df = prepare_did_data(panel)
+
+    event_results = event_study_regression(df, outcome='log_revenue')
+    # DEBUG: Print event_results
+    logger.info(f"Event results keys: {list(event_results.keys())}")
+    logger.info(f"Coefficients: {event_results.get('coefficients', {})}")
+    logger.info(f"SE: {event_results.get('se', {})}")
+    plot_event_study(event_results, 'log_revenue')
+    
+    # Save event study results
+    event_df = pd.DataFrame({
+        'Event_Time': sorted(event_results['coefficients'].keys()),
+        'Coefficient': [event_results['coefficients'][t] for t in sorted(event_results['coefficients'].keys())],
+        'Std_Error': [event_results['se'][t] for t in sorted(event_results['se'].keys())],
+        'CI_Lower': [event_results['ci_lower'][t] for t in sorted(event_results['ci_lower'].keys())],
+        'CI_Upper': [event_results['ci_upper'][t] for t in sorted(event_results['ci_upper'].keys())]
+    })
+    event_df.to_csv(PATHS['tables'] / 'event_study_results.csv', index=False, float_format='%.4f')
+    logger.info(f"✓ Saved event study results to: {PATHS['tables'] / 'event_study_results.csv'}")
+    
+    # TWFE baseline
+    twfe_results = twfe_baseline(df, outcome='log_revenue')
+    
+    # Save TWFE results
+    twfe_df = pd.DataFrame([{
+        'Specification': 'TWFE',
+        'Coefficient': twfe_results['coef'],
+        'Std_Error': twfe_results['se'],
+        'T_Stat': twfe_results['tstat'],
+        'P_Value': twfe_results['pvalue'],
+        'CI_Lower': twfe_results['ci'][0],
+        'CI_Upper': twfe_results['ci'][1],
+        'N_Obs': twfe_results['n_obs'],
+        'R_Squared': twfe_results['r_squared']
+    }])
+    twfe_df.to_csv(PATHS['tables'] / 'twfe_results.csv', index=False, float_format='%.4f')
+    logger.info(f"✓ Saved TWFE results to: {PATHS['tables'] / 'twfe_results.csv'}")
+    
+    logger.info("\n" + "="*70)
+    logger.info("DID ANALYSIS COMPLETE")
+    logger.info("="*70)
+    
+    return {
+        'event_study': event_results,
+        'twfe': twfe_results
+    }
+
+if __name__ == "__main__":
+    from scipy import stats
+    results = run_did_analysis()

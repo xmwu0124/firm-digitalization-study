@@ -1,0 +1,379 @@
+"""
+Generate Synthetic Panel Data for Digital Transformation Study
+
+This script creates a realistic synthetic dataset mimicking:
+- Compustat firm-level panel structure
+- Staggered digital technology adoption
+- Multiple capital accumulation measures
+- Spatial clustering of firms
+"""
+
+import numpy as np
+import pandas as pd
+from pathlib import Path
+import sys
+
+sys.path.append(str(Path(__file__).resolve().parent.parent))
+from utils.config_loader import CONFIG, PATHS, setup_logger, set_random_seed
+
+logger = setup_logger("data_generation")
+
+def generate_firm_characteristics(n_firms: int, seed: int = 42) -> pd.DataFrame:
+    """
+    Generate cross-sectional firm characteristics
+    
+    Returns DataFrame with:
+    - gvkey: Unique firm identifier
+    - firm_name: Company name
+    - industry: Sector (Tech, Manufacturing, Retail, Finance, Energy)
+    - hq_lat, hq_lon: Headquarters location
+    - firm_age: Years since founding (as of 2010)
+    - initial_size: Log initial employees
+    """
+    np.random.seed(seed)
+    
+    industries = ['Technology', 'Manufacturing', 'Retail', 'Finance', 'Energy']
+    industry_props = [0.25, 0.30, 0.20, 0.15, 0.10]
+    
+    # Generate spatial clusters (tech hubs, manufacturing belt, etc.)
+    clusters = {
+        'Technology': {'lat': 37.5, 'lon': -122, 'spread': 2},      # Silicon Valley
+        'Manufacturing': {'lat': 42, 'lon': -83, 'spread': 5},      # Rust Belt
+        'Retail': {'lat': 36, 'lon': -95, 'spread': 15},            # Central US
+        'Finance': {'lat': 40.7, 'lon': -74, 'spread': 1},          # NYC
+        'Energy': {'lat': 29.8, 'lon': -95, 'spread': 3}            # Houston
+    }
+    
+    firms = []
+    for i in range(1, n_firms + 1):
+        industry = np.random.choice(industries, p=industry_props)
+        cluster = clusters[industry]
+        
+        # Add spatial noise around cluster center
+        lat = cluster['lat'] + np.random.normal(0, cluster['spread'])
+        lon = cluster['lon'] + np.random.normal(0, cluster['spread'])
+        
+        # Clip to US bounds
+        lat = np.clip(lat, CONFIG['data']['lat_min'], CONFIG['data']['lat_max'])
+        lon = np.clip(lon, CONFIG['data']['lon_min'], CONFIG['data']['lon_max'])
+        
+        firms.append({
+            'gvkey': i,
+            'firm_name': f'Company_{i:03d}',
+            'industry': industry,
+            'hq_lat': lat,
+            'hq_lon': lon,
+            'firm_age': np.random.randint(5, 50),
+            'initial_size': np.random.normal(5, 1.5)  # log(employees)
+        })
+    
+    return pd.DataFrame(firms)
+
+def assign_treatment_timing(firms: pd.DataFrame, seed: int = 42) -> pd.DataFrame:
+    """
+    Assign staggered digital adoption timing
+    
+    Treatment probability depends on:
+    - Industry (Tech more likely to adopt early)
+    - Firm size (Larger firms adopt earlier)
+    - Geographic proximity to tech hubs
+    """
+    np.random.seed(seed + 1)
+    
+    # Base adoption probability by industry
+    industry_prob = {
+        'Technology': 0.75,
+        'Finance': 0.60,
+        'Manufacturing': 0.45,
+        'Retail': 0.40,
+        'Energy': 0.35
+    }
+    
+    firms = firms.copy()
+    
+    # Compute adoption probability
+    base_prob = firms['industry'].map(industry_prob)
+    
+    # Adjust for firm size (larger = more likely)
+    size_effect = 0.15 * (firms['initial_size'] - firms['initial_size'].mean()) / firms['initial_size'].std()
+    
+    # Adjust for proximity to tech hubs (distance to Silicon Valley)
+    tech_hub_lat, tech_hub_lon = 37.5, -122
+    distance_to_hub = np.sqrt(
+        (firms['hq_lat'] - tech_hub_lat)**2 + 
+        (firms['hq_lon'] - tech_hub_lon)**2
+    )
+    proximity_effect = -0.10 * (distance_to_hub - distance_to_hub.mean()) / distance_to_hub.std()
+    
+    # Total adoption probability
+    adopt_prob = np.clip(base_prob + size_effect + proximity_effect, 0.1, 0.9)
+    
+    # Assign adoption decision
+    firms['adopt_digital'] = np.random.binomial(1, adopt_prob)
+    
+    # Assign adoption year (if adopting)
+    adoption_years = list(range(
+        CONFIG['data']['adoption_start_year'],
+        CONFIG['data']['adoption_end_year'] + 1
+    ))
+    
+    # Earlier years more likely for tech firms
+    year_probs_tech = [0.4, 0.3, 0.2, 0.1]
+    year_probs_other = [0.1, 0.2, 0.3, 0.4]
+    
+    adoption_year = []
+    for _, row in firms.iterrows():
+        if row['adopt_digital'] == 1:
+            probs = year_probs_tech if row['industry'] == 'Technology' else year_probs_other
+            year = np.random.choice(adoption_years, p=probs)
+            adoption_year.append(year)
+        else:
+            adoption_year.append(np.nan)
+    
+    firms['digital_year'] = adoption_year
+    
+    logger.info(f"Treatment assignment: {firms['adopt_digital'].sum()} adopters out of {len(firms)} firms")
+    logger.info(f"Adoption by year:\n{firms['digital_year'].value_counts().sort_index()}")
+    
+    return firms
+
+def expand_to_panel(firms: pd.DataFrame) -> pd.DataFrame:
+    """Expand cross-section to panel by adding time dimension"""
+    years = list(range(CONFIG['data']['start_year'], CONFIG['data']['end_year'] + 1))
+    
+    panel = firms.merge(
+        pd.DataFrame({'year': years}),
+        how='cross'
+    )
+    
+    # Create treatment indicator
+    panel['treated'] = (
+        (panel['year'] >= panel['digital_year']) & 
+        (panel['digital_year'].notna())
+    ).astype(int)
+    
+    # Years relative to treatment
+    panel['rel_year'] = np.where(
+        panel['digital_year'].notna(),
+        panel['year'] - panel['digital_year'],
+        np.nan
+    )
+    
+    return panel.sort_values(['gvkey', 'year']).reset_index(drop=True)
+
+def generate_outcomes_and_controls(panel: pd.DataFrame, seed: int = 42) -> pd.DataFrame:
+    """
+    Generate outcome variables and controls with realistic dynamics
+    
+    Outcomes:
+    - log_revenue: Log total revenue
+    - log_revenue_growth: Year-over-year growth rate
+    
+    Controls/Inputs (for capital accumulation model):
+    - emp: Number of employees
+    - xrd: R&D expenditure
+    - xsga: SG&A expenditure (organizational capital proxy)
+    - ppent: Property, plant & equipment
+    """
+    np.random.seed(seed + 2)
+    
+    panel = panel.copy()
+    n = len(panel)
+    
+    # Firm fixed effects (time-invariant)
+    firm_fe = panel.groupby('gvkey')['initial_size'].transform('first')
+    
+    # Time trend
+    time_trend = 0.03 * (panel['year'] - CONFIG['data']['start_year'])
+    
+    # Industry-specific growth rates
+    industry_growth = {
+        'Technology': 0.08,
+        'Finance': 0.04,
+        'Manufacturing': 0.02,
+        'Retail': 0.03,
+        'Energy': 0.01
+    }
+    ind_effect = panel['industry'].map(industry_growth) * (panel['year'] - CONFIG['data']['start_year'])
+    
+    # Treatment effect (heterogeneous by firm size)
+    # Larger firms benefit more from digitalization
+    size_het = (panel['initial_size'] - panel['initial_size'].mean()) / panel['initial_size'].std()
+    base_treatment_effect = 0.15
+    treatment_effect = base_treatment_effect * (1 + 0.3 * size_het)
+    
+    # Dynamic treatment effects (gradual adoption)
+    dynamic_effect = np.zeros(n)
+    for t in range(-3, 6):
+        mask = (panel['rel_year'] == t)
+        if t < 0:
+            # No pre-trends (parallel trends assumption)
+            dynamic_effect[mask] = 0.02 * np.random.normal(0, 0.01, mask.sum())
+        elif t == 0:
+            dynamic_effect[mask] = treatment_effect[mask] * 0.3
+        elif t == 1:
+            dynamic_effect[mask] = treatment_effect[mask] * 0.6
+        else:
+            dynamic_effect[mask] = treatment_effect[mask] * (1 + 0.05 * (t - 1))
+    
+    # Random firm-year shocks
+    shocks = np.random.normal(0, 0.15, n)
+    
+    # Log revenue
+    panel['log_revenue'] = (
+        4.5 +                           # baseline
+        firm_fe * 0.3 +                 # firm size effect
+        time_trend +                    # secular growth
+        ind_effect +                    # industry trends
+        dynamic_effect * panel['treated'] +  # treatment effect
+        shocks                          # idiosyncratic shocks
+    )
+    
+    # Revenue levels
+    panel['revenue'] = np.exp(panel['log_revenue'])
+    
+    # Generate capital inputs (flows)
+    # These are used in the Bayesian capital accumulation model
+    
+    # Employees (human capital proxy)
+    panel['emp'] = np.exp(
+        firm_fe +
+        0.02 * (panel['year'] - CONFIG['data']['start_year']) +
+        0.08 * panel['treated'] +
+        np.random.normal(0, 0.12, n)
+    )
+    
+    # R&D (knowledge capital flow)
+    # Tech firms have higher R&D intensity
+    rd_intensity = np.where(panel['industry'] == 'Technology', 0.15, 0.05)
+    panel['xrd'] = panel['revenue'] * rd_intensity * (
+        1 + 0.12 * panel['treated'] +
+        np.random.normal(0, 0.05, n)
+    )
+    panel['xrd'] = np.maximum(panel['xrd'], 0)  # Non-negative
+    
+    # SG&A (organizational capital flow)
+    panel['xsga'] = panel['revenue'] * 0.20 * (
+        1 + 0.08 * panel['treated'] +
+        np.random.normal(0, 0.05, n)
+    )
+    panel['xsga'] = np.maximum(panel['xsga'], 0)
+    
+    # Physical capital (PP&E)
+    # Manufacturing has higher capital intensity
+    capital_intensity = np.where(panel['industry'] == 'Manufacturing', 0.6, 0.3)
+    panel['ppent'] = panel['revenue'] * capital_intensity * (
+        1 + 0.03 * panel['treated'] +
+        np.random.normal(0, 0.08, n)
+    )
+    panel['ppent'] = np.maximum(panel['ppent'], 0)
+    
+    # Add some missing values (realistic)
+    missing_rate = 0.02
+    for col in ['xrd', 'xsga', 'emp']:
+        mask = np.random.random(n) < missing_rate
+        panel.loc[mask, col] = np.nan
+    
+    # Revenue growth rate
+    panel['revenue_growth'] = panel.groupby('gvkey')['log_revenue'].diff()
+    
+    return panel
+
+def add_text_indicators(panel: pd.DataFrame, seed: int = 42) -> pd.DataFrame:
+    """
+    Add indicators for text mining simulation
+    (which firms have digitalization mentions in 10-K filings)
+    """
+    np.random.seed(seed + 3)
+    
+    panel = panel.copy()
+    
+    # Firms that adopted are more likely to have text mentions
+    # Mentions appear 1-2 years before/after adoption
+    panel['has_digital_mention'] = 0
+    
+    for gvkey in panel[panel['adopt_digital'] == 1]['gvkey'].unique():
+        firm_data = panel[panel['gvkey'] == gvkey]
+        adopt_year = firm_data['digital_year'].iloc[0]
+        
+        # Mention window: [adopt_year - 1, adopt_year + 1]
+        mention_mask = (
+            (panel['gvkey'] == gvkey) &
+            (panel['year'] >= adopt_year - 1) &
+            (panel['year'] <= adopt_year + 1)
+        )
+        panel.loc[mention_mask, 'has_digital_mention'] = 1
+    
+    return panel
+
+def generate_synthetic_panel(save: bool = True) -> pd.DataFrame:
+    """Main function: generate complete synthetic panel"""
+    logger.info("="*70)
+    logger.info("SYNTHETIC DATA GENERATION")
+    logger.info("="*70)
+    
+    seed = CONFIG['analysis']['seed']
+    set_random_seed(seed)
+    
+    # Step 1: Firm characteristics
+    logger.info("Step 1: Generating firm characteristics...")
+    firms = generate_firm_characteristics(CONFIG['data']['n_firms'], seed)
+    logger.info(f"  Created {len(firms)} firms")
+    logger.info(f"  Industry distribution:\n{firms['industry'].value_counts()}")
+    
+    # Step 2: Treatment assignment
+    logger.info("\nStep 2: Assigning treatment timing...")
+    firms = assign_treatment_timing(firms, seed)
+    
+    # Step 3: Expand to panel
+    logger.info("\nStep 3: Expanding to panel structure...")
+    panel = expand_to_panel(firms)
+    logger.info(f"  Panel dimensions: {len(panel)} observations")
+    logger.info(f"  Time span: {panel['year'].min()} - {panel['year'].max()}")
+    
+    # Step 4: Generate outcomes and controls
+    logger.info("\nStep 4: Generating outcomes and controls...")
+    panel = generate_outcomes_and_controls(panel, seed)
+    
+    # Step 5: Add text indicators
+    logger.info("\nStep 5: Adding text mining indicators...")
+    panel = add_text_indicators(panel, seed)
+    logger.info(f"  {panel['has_digital_mention'].sum()} firm-years with digital mentions")
+    
+    # Summary statistics
+    logger.info("\n" + "="*70)
+    logger.info("DATA SUMMARY")
+    logger.info("="*70)
+    logger.info(f"Total observations: {len(panel):,}")
+    logger.info(f"Unique firms: {panel['gvkey'].nunique():,}")
+    logger.info(f"Time periods: {panel['year'].nunique()}")
+    logger.info(f"Treated observations: {panel['treated'].sum():,} ({panel['treated'].mean():.1%})")
+    logger.info(f"\nMissing values:")
+    for col in ['xrd', 'xsga', 'emp', 'ppent']:
+        missing_pct = panel[col].isna().mean()
+        logger.info(f"  {col}: {missing_pct:.1%}")
+    
+    # Save
+    if save:
+        output_path = PATHS['data_processed'] / 'firm_panel.csv'
+        panel.to_csv(output_path, index=False)
+        logger.info(f"\n✓ Saved panel data to: {output_path}")
+        
+        # Save firm characteristics separately
+        firm_chars = panel[panel['year'] == CONFIG['data']['start_year']][
+            ['gvkey', 'firm_name', 'industry', 'hq_lat', 'hq_lon', 
+             'firm_age', 'initial_size', 'adopt_digital', 'digital_year']
+        ]
+        firm_path = PATHS['data_processed'] / 'firm_characteristics.csv'
+        firm_chars.to_csv(firm_path, index=False)
+        logger.info(f"✓ Saved firm characteristics to: {firm_path}")
+    
+    return panel
+
+if __name__ == "__main__":
+    panel = generate_synthetic_panel(save=True)
+    print("\n" + "="*70)
+    print("GENERATION COMPLETE")
+    print("="*70)
+    print("\nData preview:")
+    print(panel.head(20))

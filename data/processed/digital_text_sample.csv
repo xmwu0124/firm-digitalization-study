@@ -1,0 +1,312 @@
+gvkey,fiscal_year,text,text_type,true_digital_year,has_explicit_date
+6,2017,In our annual business review: The Company remains committed to technological innovation and modernization. We believe this positions us well for future growth.,vague,2018.0,False
+6,2018,"Strategic update: Cloud migration was finalized in 2018, replacing legacy IT infrastructure. We believe this positions us well for future growth.",completion,2018.0,True
+6,2019,Strategic update: The Board approved and the Company finished deployment of AI-driven systems in October 2018. This represents a significant milestone for the Company.,completion,2018.0,True
+10,2017,In our annual business review: AI and analytics integration is being conducted throughout 2018.,inprogress,2018.0,False
+10,2018,"Strategic update: 2018 marked the completion of our enterprise-wide digitalization project, implemented across all business units. Additional details are provided in the technology section.",completion,2018.0,True
+10,2019,In our annual business review: We recognize the importance of digital transformation for future competitiveness. This represents a significant milestone for the Company.,vague,2018.0,False
+12,2017,In our annual business review: We recognize the importance of digital transformation for future competitiveness. This represents a significant milestone for the Company.,vague,2018.0,False
+12,2018,"Strategic update: 2018 marked the completion of our enterprise-wide digitalization project, implemented across all business units.",completion,2018.0,True
+12,2019,"In our annual business review: The Company concluded its digital transformation program in 2018, successfully migrating to advanced analytics platforms.",completion,2018.0,True
+13,2016,In our annual business review: We recognize the importance of digital transformation for future competitiveness. This represents a significant milestone for the Company.,vague,2017.0,False
+13,2017,"Strategic update: 2017 marked the completion of our enterprise-wide digitalization project, implemented across all business units.",completion,2017.0,True
+13,2018,"In our annual business review: The Company concluded its digital transformation program in 2017, successfully migrating to advanced analytics platforms.",completion,2017.0,True
+16,2015,Strategic update: We recognize the importance of digital transformation for future competitiveness. We believe this positions us well for future growth.,vague,2016.0,False
+16,2016,"Management's discussion: 2016 marked the completion of our enterprise-wide digitalization project, implemented across all business units. This represents a significant milestone for the Company.",completion,2016.0,True
+16,2017,In our annual business review: The Company remains committed to technological innovation and modernization. This represents a significant milestone for the Company.,vague,2016.0,False
+17,2015,The Company remains committed to technological innovation and modernization. Additional details are provided in the technology section.,vague,2016.0,False
+17,2016,"Strategic update: 2016 marked the completion of our enterprise-wide digitalization project, implemented across all business units. This represents a significant milestone for the Company.",completion,2016.0,True
+17,2017,Management's discussion: The Company continues to evaluate opportunities in digital technology and artificial intelligence. This represents a significant milestone for the Company.,vague,2016.0,False
+18,2015,"In our annual business review: The digitalization program is in progress, having begun in Q1 2016. Additional details are provided in the technology section.",inprogress,2016.0,False
+18,2016,"In 2016, the Company completed implementation of cloud-based infrastructure. The digital transformation initiative was finalized in QQ2 2016. Additional details are provided in the technology section.",completion,2016.0,True
+18,2017,"Management's discussion: In 2016, we completed the rollout of digital tools company-wide, effective from June 2016.",completion,2016.0,True
+19,2016,Management's discussion: The Company continues to evaluate opportunities in digital technology and artificial intelligence. Additional details are provided in the technology section.,vague,2017.0,False
+19,2017,The Board approved and the Company finished deployment of AI-driven systems in July 2017. We believe this positions us well for future growth.,completion,2017.0,True
+19,2018,"Management's discussion: Digital infrastructure upgrade was completed during fiscal year 2017, enhancing operational efficiency.",completion,2017.0,True
+20,2015,Management's discussion: The Company continues to evaluate opportunities in digital technology and artificial intelligence. Additional details are provided in the technology section.,vague,2016.0,False
+20,2016,The Board approved and the Company finished deployment of AI-driven systems in July 2016. We believe this positions us well for future growth.,completion,2016.0,True
+20,2017,"Management's discussion: Digital infrastructure upgrade was completed during fiscal year 2016, enhancing operational efficiency.",completion,2016.0,True
+22,2017,The Company continues to evaluate opportunities in digital technology and artificial intelligence. This represents a significant milestone for the Company.,vague,2018.0,False
+22,2018,"In our annual business review: Digital infrastructure upgrade was completed during fiscal year 2018, enhancing operational efficiency. Additional details are provided in the technology section.",completion,2018.0,True
+22,2019,In our annual business review: We recognize the importance of digital transformation for future competitiveness. We believe this positions us well for future growth.,vague,2018.0,False
+24,2017,"Strategic update: Digital infrastructure modernization is underway as of 2018, with ongoing deployment across divisions. This represents a significant milestone for the Company.",inprogress,2018.0,False
+24,2018,"Strategic update: In 2018, we completed the rollout of digital tools company-wide, effective from January 2018. Additional details are provided in the technology section.",completion,2018.0,True
+24,2019,"Management's discussion: Cloud migration was finalized in 2018, replacing legacy IT infrastructure. Additional details are provided in the technology section.",completion,2018.0,True
+28,2016,The Company remains committed to technological innovation and modernization.,vague,2017.0,False
+28,2017,"In our annual business review: 2017 marked the completion of our enterprise-wide digitalization project, implemented across all business units.",completion,2017.0,True
+28,2018,"Management's discussion: Cloud migration was finalized in 2017, replacing legacy IT infrastructure. Additional details are provided in the technology section.",completion,2017.0,True
+30,2014,"The digitalization program is in progress, having begun in Q4 2015.",inprogress,2015.0,False
+30,2015,"In our annual business review: 2015 marked the completion of our enterprise-wide digitalization project, implemented across all business units.",completion,2015.0,True
+30,2016,"Management's discussion: Cloud migration was finalized in 2015, replacing legacy IT infrastructure. Additional details are provided in the technology section.",completion,2015.0,True
+33,2014,"The digitalization program is in progress, having begun in Q4 2015. We believe this positions us well for future growth.",inprogress,2015.0,False
+33,2015,"Strategic update: In 2015, the Company completed implementation of cloud-based infrastructure. The digital transformation initiative was finalized in QQ2 2015. We believe this positions us well for future growth.",completion,2015.0,True
+33,2016,In our annual business review: We recognize the importance of digital transformation for future competitiveness.,vague,2015.0,False
+34,2014,Management's discussion: The Company continues to evaluate opportunities in digital technology and artificial intelligence. This represents a significant milestone for the Company.,vague,2015.0,False
+34,2015,"Management's discussion: The Company concluded its digital transformation program in 2015, successfully migrating to advanced analytics platforms. We believe this positions us well for future growth.",completion,2015.0,True
+34,2016,"In our annual business review: In 2015, we completed the rollout of digital tools company-wide, effective from October 2015.",completion,2015.0,True
+36,2016,Digital strategy development is a priority for the organization. Additional details are provided in the technology section.,vague,2017.0,False
+36,2017,"Management's discussion: Digital infrastructure upgrade was completed during fiscal year 2017, enhancing operational efficiency. We believe this positions us well for future growth.",completion,2017.0,True
+36,2018,"Cloud migration was finalized in 2017, replacing legacy IT infrastructure. This represents a significant milestone for the Company.",completion,2017.0,True
+42,2016,"Management's discussion: The digitalization program is in progress, having begun in Q3 2017.",inprogress,2017.0,False
+42,2017,"Management's discussion: The Company concluded its digital transformation program in 2017, successfully migrating to advanced analytics platforms. This represents a significant milestone for the Company.",completion,2017.0,True
+42,2018,"Strategic update: Digital infrastructure upgrade was completed during fiscal year 2017, enhancing operational efficiency. This represents a significant milestone for the Company.",completion,2017.0,True
+43,2017,"In our annual business review: We are progressing on cloud adoption, started in 2018 and expected to complete by 2019. We believe this positions us well for future growth.",inprogress,2018.0,False
+43,2018,"Strategic update: Digital infrastructure upgrade was completed during fiscal year 2018, enhancing operational efficiency. This represents a significant milestone for the Company.",completion,2018.0,True
+43,2019,Strategic update: The Company continues to evaluate opportunities in digital technology and artificial intelligence. Additional details are provided in the technology section.,vague,2018.0,False
+45,2014,In our annual business review: We recognize the importance of digital transformation for future competitiveness.,vague,2015.0,False
+45,2015,"Strategic update: Digital infrastructure upgrade was completed during fiscal year 2015, enhancing operational efficiency. This represents a significant milestone for the Company.",completion,2015.0,True
+45,2016,In our annual business review: Management is exploring various technology solutions to enhance operations. Additional details are provided in the technology section.,vague,2015.0,False
+50,2015,Strategic update: The Company remains committed to technological innovation and modernization. Additional details are provided in the technology section.,vague,2016.0,False
+50,2016,"Management's discussion: Digital infrastructure upgrade was completed during fiscal year 2016, enhancing operational efficiency. We believe this positions us well for future growth.",completion,2016.0,True
+50,2017,"Management's discussion: The Company concluded its digital transformation program in 2016, successfully migrating to advanced analytics platforms. We believe this positions us well for future growth.",completion,2016.0,True
+51,2015,In our annual business review: Management is exploring various technology solutions to enhance operations. This represents a significant milestone for the Company.,vague,2016.0,False
+51,2016,"Management's discussion: The Company concluded its digital transformation program in 2016, successfully migrating to advanced analytics platforms. We believe this positions us well for future growth.",completion,2016.0,True
+51,2017,"Strategic update: The Company concluded its digital transformation program in 2016, successfully migrating to advanced analytics platforms. We believe this positions us well for future growth.",completion,2016.0,True
+52,2015,In our annual business review: We recognize the importance of digital transformation for future competitiveness.,vague,2016.0,False
+52,2016,"Strategic update: The Company concluded its digital transformation program in 2016, successfully migrating to advanced analytics platforms. We believe this positions us well for future growth.",completion,2016.0,True
+52,2017,"In our annual business review: The Company concluded its digital transformation program in 2016, successfully migrating to advanced analytics platforms. We believe this positions us well for future growth.",completion,2016.0,True
+53,2016,"Strategic update: Digital infrastructure modernization is underway as of 2017, with ongoing deployment across divisions.",inprogress,2017.0,False
+53,2017,"Management's discussion: The Company concluded its digital transformation program in 2017, successfully migrating to advanced analytics platforms. Additional details are provided in the technology section.",completion,2017.0,True
+53,2018,Digital strategy development is a priority for the organization. Additional details are provided in the technology section.,vague,2017.0,False
+54,2015,We recognize the importance of digital transformation for future competitiveness. We believe this positions us well for future growth.,vague,2016.0,False
+54,2016,"Management's discussion: The Company concluded its digital transformation program in 2016, successfully migrating to advanced analytics platforms. Additional details are provided in the technology section.",completion,2016.0,True
+54,2017,Digital strategy development is a priority for the organization. Additional details are provided in the technology section.,vague,2016.0,False
+55,2015,We recognize the importance of digital transformation for future competitiveness. We believe this positions us well for future growth.,vague,2016.0,False
+55,2016,Management's discussion: The Board approved and the Company finished deployment of AI-driven systems in October 2016. Additional details are provided in the technology section.,completion,2016.0,True
+55,2017,"In 2016, we completed the rollout of digital tools company-wide, effective from November 2016. Additional details are provided in the technology section.",completion,2016.0,True
+56,2014,We recognize the importance of digital transformation for future competitiveness. We believe this positions us well for future growth.,vague,2015.0,False
+56,2015,Management's discussion: The Board approved and the Company finished deployment of AI-driven systems in October 2015. Additional details are provided in the technology section.,completion,2015.0,True
+56,2016,"In 2015, we completed the rollout of digital tools company-wide, effective from November 2015. Additional details are provided in the technology section.",completion,2015.0,True
+58,2014,Strategic update: Digital strategy development is a priority for the organization.,vague,2015.0,False
+58,2015,"2015 marked the completion of our enterprise-wide digitalization project, implemented across all business units. Additional details are provided in the technology section.",completion,2015.0,True
+58,2016,"Management's discussion: In 2015, we completed the rollout of digital tools company-wide, effective from August 2015.",completion,2015.0,True
+60,2015,"The digitalization program is in progress, having begun in Q1 2016. This represents a significant milestone for the Company.",inprogress,2016.0,False
+60,2016,"In our annual business review: Cloud migration was finalized in 2016, replacing legacy IT infrastructure.",completion,2016.0,True
+60,2017,In our annual business review: The Company continues to evaluate opportunities in digital technology and artificial intelligence.,vague,2016.0,False
+61,2016,"The Company is currently advancing its digital transformation initiative, commenced in 2017. Additional details are provided in the technology section.",inprogress,2017.0,False
+61,2017,"In our annual business review: 2017 marked the completion of our enterprise-wide digitalization project, implemented across all business units. Additional details are provided in the technology section.",completion,2017.0,True
+61,2018,The Board approved and the Company finished deployment of AI-driven systems in March 2017. This represents a significant milestone for the Company.,completion,2017.0,True
+67,2016,Management's discussion: The Company continues to evaluate opportunities in digital technology and artificial intelligence. This represents a significant milestone for the Company.,vague,2017.0,False
+67,2017,"In our annual business review: 2017 marked the completion of our enterprise-wide digitalization project, implemented across all business units. We believe this positions us well for future growth.",completion,2017.0,True
+67,2018,"In our annual business review: The Company concluded its digital transformation program in 2017, successfully migrating to advanced analytics platforms.",completion,2017.0,True
+69,2015,In our annual business review: The Company remains committed to technological innovation and modernization.,vague,2016.0,False
+69,2016,"In our annual business review: The Company concluded its digital transformation program in 2016, successfully migrating to advanced analytics platforms.",completion,2016.0,True
+69,2017,"Strategic update: In 2016, the Company completed implementation of cloud-based infrastructure. The digital transformation initiative was finalized in QQ3 2016. We believe this positions us well for future growth.",completion,2016.0,True
+71,2015,Strategic update: The Company continues to evaluate opportunities in digital technology and artificial intelligence.,vague,2016.0,False
+71,2016,"2016 marked the completion of our enterprise-wide digitalization project, implemented across all business units. Additional details are provided in the technology section.",completion,2016.0,True
+71,2017,"Strategic update: In 2016, we completed the rollout of digital tools company-wide, effective from March 2016. Additional details are provided in the technology section.",completion,2016.0,True
+72,2016,Strategic update: AI and analytics integration is being conducted throughout 2017. Additional details are provided in the technology section.,inprogress,2017.0,False
+72,2017,"Digital infrastructure upgrade was completed during fiscal year 2017, enhancing operational efficiency.",completion,2017.0,True
+72,2018,Management's discussion: The Company continues to evaluate opportunities in digital technology and artificial intelligence. This represents a significant milestone for the Company.,vague,2017.0,False
+78,2016,Management's discussion: The Company continues to evaluate opportunities in digital technology and artificial intelligence. This represents a significant milestone for the Company.,vague,2017.0,False
+78,2017,"Strategic update: In 2017, the Company completed implementation of cloud-based infrastructure. The digital transformation initiative was finalized in QQ3 2017. This represents a significant milestone for the Company.",completion,2017.0,True
+78,2018,Management is exploring various technology solutions to enhance operations.,vague,2017.0,False
+81,2016,"Strategic update: The digitalization program is in progress, having begun in Q3 2017. Additional details are provided in the technology section.",inprogress,2017.0,False
+81,2017,"Strategic update: The Company concluded its digital transformation program in 2017, successfully migrating to advanced analytics platforms. This represents a significant milestone for the Company.",completion,2017.0,True
+81,2018,"In our annual business review: 2017 marked the completion of our enterprise-wide digitalization project, implemented across all business units. This represents a significant milestone for the Company.",completion,2017.0,True
+82,2017,In our annual business review: The Company remains committed to technological innovation and modernization. Additional details are provided in the technology section.,vague,2018.0,False
+82,2018,"Digital infrastructure upgrade was completed during fiscal year 2018, enhancing operational efficiency. This represents a significant milestone for the Company.",completion,2018.0,True
+82,2019,In our annual business review: Digital strategy development is a priority for the organization. We believe this positions us well for future growth.,vague,2018.0,False
+84,2016,In our annual business review: Management is exploring various technology solutions to enhance operations.,vague,2017.0,False
+84,2017,"Strategic update: In 2017, we completed the rollout of digital tools company-wide, effective from May 2017. We believe this positions us well for future growth.",completion,2017.0,True
+84,2018,"In our annual business review: Cloud migration was finalized in 2017, replacing legacy IT infrastructure. This represents a significant milestone for the Company.",completion,2017.0,True
+90,2015,Management is exploring various technology solutions to enhance operations. This represents a significant milestone for the Company.,vague,2016.0,False
+90,2016,Management's discussion: The Board approved and the Company finished deployment of AI-driven systems in March 2016.,completion,2016.0,True
+90,2017,Digital strategy development is a priority for the organization. We believe this positions us well for future growth.,vague,2016.0,False
+91,2015,Digital strategy development is a priority for the organization. We believe this positions us well for future growth.,vague,2016.0,False
+91,2016,Strategic update: The Board approved and the Company finished deployment of AI-driven systems in February 2016. Additional details are provided in the technology section.,completion,2016.0,True
+91,2017,In our annual business review: We recognize the importance of digital transformation for future competitiveness.,vague,2016.0,False
+93,2017,Management's discussion: The Company remains committed to technological innovation and modernization. We believe this positions us well for future growth.,vague,2018.0,False
+93,2018,"In 2018, the Company completed implementation of cloud-based infrastructure. The digital transformation initiative was finalized in QQ4 2018. This represents a significant milestone for the Company.",completion,2018.0,True
+93,2019,Strategic update: The Company continues to evaluate opportunities in digital technology and artificial intelligence. Additional details are provided in the technology section.,vague,2018.0,False
+96,2014,Management's discussion: The Company remains committed to technological innovation and modernization. We believe this positions us well for future growth.,vague,2015.0,False
+96,2015,"In 2015, the Company completed implementation of cloud-based infrastructure. The digital transformation initiative was finalized in QQ4 2015. This represents a significant milestone for the Company.",completion,2015.0,True
+96,2016,Strategic update: The Company continues to evaluate opportunities in digital technology and artificial intelligence. Additional details are provided in the technology section.,vague,2015.0,False
+97,2014,The Company continues to evaluate opportunities in digital technology and artificial intelligence. Additional details are provided in the technology section.,vague,2015.0,False
+97,2015,"Management's discussion: In 2015, the Company completed implementation of cloud-based infrastructure. The digital transformation initiative was finalized in QQ3 2015. We believe this positions us well for future growth.",completion,2015.0,True
+97,2016,"The Company concluded its digital transformation program in 2015, successfully migrating to advanced analytics platforms.",completion,2015.0,True
+99,2015,Strategic update: Management is exploring various technology solutions to enhance operations. Additional details are provided in the technology section.,vague,2016.0,False
+99,2016,"In 2016, we completed the rollout of digital tools company-wide, effective from September 2016. Additional details are provided in the technology section.",completion,2016.0,True
+99,2017,Management's discussion: The Company remains committed to technological innovation and modernization. Additional details are provided in the technology section.,vague,2016.0,False
+103,2014,"Management's discussion: The Company is currently advancing its digital transformation initiative, commenced in 2015. Additional details are provided in the technology section.",inprogress,2015.0,False
+103,2015,"Management's discussion: In 2015, we completed the rollout of digital tools company-wide, effective from April 2015. This represents a significant milestone for the Company.",completion,2015.0,True
+103,2016,Management's discussion: The Board approved and the Company finished deployment of AI-driven systems in February 2015. Additional details are provided in the technology section.,completion,2015.0,True
+104,2014,"Management's discussion: The Company is currently advancing its digital transformation initiative, commenced in 2015. This represents a significant milestone for the Company.",inprogress,2015.0,False
+104,2015,Management's discussion: The Board approved and the Company finished deployment of AI-driven systems in February 2015. Additional details are provided in the technology section.,completion,2015.0,True
+104,2016,The Company continues to evaluate opportunities in digital technology and artificial intelligence. Additional details are provided in the technology section.,vague,2015.0,False
+105,2014,Digital strategy development is a priority for the organization. Additional details are provided in the technology section.,vague,2015.0,False
+105,2015,"Strategic update: In 2015, the Company completed implementation of cloud-based infrastructure. The digital transformation initiative was finalized in QQ4 2015. We believe this positions us well for future growth.",completion,2015.0,True
+105,2016,We recognize the importance of digital transformation for future competitiveness. We believe this positions us well for future growth.,vague,2015.0,False
+106,2017,Strategic update: We recognize the importance of digital transformation for future competitiveness.,vague,2018.0,False
+106,2018,"In our annual business review: Cloud migration was finalized in 2018, replacing legacy IT infrastructure. We believe this positions us well for future growth.",completion,2018.0,True
+106,2019,Management's discussion: We recognize the importance of digital transformation for future competitiveness. Additional details are provided in the technology section.,vague,2018.0,False
+107,2016,"Digital infrastructure modernization is underway as of 2017, with ongoing deployment across divisions. Additional details are provided in the technology section.",inprogress,2017.0,False
+107,2017,"In our annual business review: Cloud migration was finalized in 2017, replacing legacy IT infrastructure. We believe this positions us well for future growth.",completion,2017.0,True
+107,2018,Management's discussion: We recognize the importance of digital transformation for future competitiveness. Additional details are provided in the technology section.,vague,2017.0,False
+108,2014,"Strategic update: The digitalization program is in progress, having begun in Q1 2015. We believe this positions us well for future growth.",inprogress,2015.0,False
+108,2015,"In our annual business review: The Company concluded its digital transformation program in 2015, successfully migrating to advanced analytics platforms. We believe this positions us well for future growth.",completion,2015.0,True
+108,2016,"In our annual business review: Cloud migration was finalized in 2015, replacing legacy IT infrastructure. We believe this positions us well for future growth.",completion,2015.0,True
+109,2015,"In our annual business review: We are progressing on cloud adoption, started in 2016 and expected to complete by 2017. We believe this positions us well for future growth.",inprogress,2016.0,False
+109,2016,"Management's discussion: The Company concluded its digital transformation program in 2016, successfully migrating to advanced analytics platforms.",completion,2016.0,True
+109,2017,In our annual business review: The Board approved and the Company finished deployment of AI-driven systems in March 2016. Additional details are provided in the technology section.,completion,2016.0,True
+110,2017,Management's discussion: We recognize the importance of digital transformation for future competitiveness. We believe this positions us well for future growth.,vague,2018.0,False
+110,2018,"Cloud migration was finalized in 2018, replacing legacy IT infrastructure. We believe this positions us well for future growth.",completion,2018.0,True
+110,2019,In our annual business review: The Board approved and the Company finished deployment of AI-driven systems in May 2018. We believe this positions us well for future growth.,completion,2018.0,True
+112,2017,Digital strategy development is a priority for the organization. We believe this positions us well for future growth.,vague,2018.0,False
+112,2018,"Cloud migration was finalized in 2018, replacing legacy IT infrastructure. This represents a significant milestone for the Company.",completion,2018.0,True
+112,2019,"Management's discussion: The Company concluded its digital transformation program in 2018, successfully migrating to advanced analytics platforms. Additional details are provided in the technology section.",completion,2018.0,True
+114,2016,The Company continues to evaluate opportunities in digital technology and artificial intelligence.,vague,2017.0,False
+114,2017,"Management's discussion: The Company concluded its digital transformation program in 2017, successfully migrating to advanced analytics platforms. Additional details are provided in the technology section.",completion,2017.0,True
+114,2018,"Strategic update: In 2017, the Company completed implementation of cloud-based infrastructure. The digital transformation initiative was finalized in QQ1 2017. This represents a significant milestone for the Company.",completion,2017.0,True
+115,2016,We recognize the importance of digital transformation for future competitiveness. We believe this positions us well for future growth.,vague,2017.0,False
+115,2017,"Strategic update: In 2017, the Company completed implementation of cloud-based infrastructure. The digital transformation initiative was finalized in QQ1 2017. This represents a significant milestone for the Company.",completion,2017.0,True
+115,2018,Strategic update: The Board approved and the Company finished deployment of AI-driven systems in May 2017.,completion,2017.0,True
+118,2014,In our annual business review: The Company continues to evaluate opportunities in digital technology and artificial intelligence. We believe this positions us well for future growth.,vague,2015.0,False
+118,2015,Strategic update: The Board approved and the Company finished deployment of AI-driven systems in May 2015.,completion,2015.0,True
+118,2016,Strategic update: The Company continues to evaluate opportunities in digital technology and artificial intelligence. Additional details are provided in the technology section.,vague,2015.0,False
+119,2017,"Management's discussion: The Company is currently advancing its digital transformation initiative, commenced in 2018. This represents a significant milestone for the Company.",inprogress,2018.0,False
+119,2018,"In our annual business review: Digital infrastructure upgrade was completed during fiscal year 2018, enhancing operational efficiency. We believe this positions us well for future growth.",completion,2018.0,True
+119,2019,Management's discussion: The Company continues to evaluate opportunities in digital technology and artificial intelligence. This represents a significant milestone for the Company.,vague,2018.0,False
+128,2017,Strategic update: Digital strategy development is a priority for the organization. Additional details are provided in the technology section.,vague,2018.0,False
+128,2018,"Strategic update: The Company concluded its digital transformation program in 2018, successfully migrating to advanced analytics platforms. Additional details are provided in the technology section.",completion,2018.0,True
+128,2019,"Management's discussion: In 2018, the Company completed implementation of cloud-based infrastructure. The digital transformation initiative was finalized in QQ1 2018. Additional details are provided in the technology section.",completion,2018.0,True
+132,2017,"Management's discussion: Digital infrastructure modernization is underway as of 2018, with ongoing deployment across divisions. We believe this positions us well for future growth.",inprogress,2018.0,False
+132,2018,"In our annual business review: In 2018, the Company completed implementation of cloud-based infrastructure. The digital transformation initiative was finalized in QQ2 2018. We believe this positions us well for future growth.",completion,2018.0,True
+132,2019,"Strategic update: Digital infrastructure upgrade was completed during fiscal year 2018, enhancing operational efficiency. This represents a significant milestone for the Company.",completion,2018.0,True
+136,2017,"In our annual business review: Digital infrastructure modernization is underway as of 2018, with ongoing deployment across divisions. We believe this positions us well for future growth.",inprogress,2018.0,False
+136,2018,"Strategic update: Cloud migration was finalized in 2018, replacing legacy IT infrastructure.",completion,2018.0,True
+136,2019,In our annual business review: The Board approved and the Company finished deployment of AI-driven systems in November 2018. We believe this positions us well for future growth.,completion,2018.0,True
+139,2016,Strategic update: Digital strategy development is a priority for the organization. We believe this positions us well for future growth.,vague,2017.0,False
+139,2017,"In our annual business review: The Company concluded its digital transformation program in 2017, successfully migrating to advanced analytics platforms. Additional details are provided in the technology section.",completion,2017.0,True
+139,2018,"Management's discussion: In 2017, the Company completed implementation of cloud-based infrastructure. The digital transformation initiative was finalized in QQ1 2017. Additional details are provided in the technology section.",completion,2017.0,True
+140,2015,Strategic update: Digital strategy development is a priority for the organization. We believe this positions us well for future growth.,vague,2016.0,False
+140,2016,"In our annual business review: The Company concluded its digital transformation program in 2016, successfully migrating to advanced analytics platforms. Additional details are provided in the technology section.",completion,2016.0,True
+140,2017,"Management's discussion: In 2016, the Company completed implementation of cloud-based infrastructure. The digital transformation initiative was finalized in QQ1 2016. Additional details are provided in the technology section.",completion,2016.0,True
+141,2015,Strategic update: We recognize the importance of digital transformation for future competitiveness. Additional details are provided in the technology section.,vague,2016.0,False
+141,2016,"Management's discussion: In 2016, the Company completed implementation of cloud-based infrastructure. The digital transformation initiative was finalized in QQ1 2016. Additional details are provided in the technology section.",completion,2016.0,True
+141,2017,"In our annual business review: Cloud migration was finalized in 2016, replacing legacy IT infrastructure. We believe this positions us well for future growth.",completion,2016.0,True
+144,2014,In our annual business review: We recognize the importance of digital transformation for future competitiveness. We believe this positions us well for future growth.,vague,2015.0,False
+144,2015,Management's discussion: The Board approved and the Company finished deployment of AI-driven systems in October 2015.,completion,2015.0,True
+144,2016,Management's discussion: The Company remains committed to technological innovation and modernization. This represents a significant milestone for the Company.,vague,2015.0,False
+145,2014,Digital strategy development is a priority for the organization. We believe this positions us well for future growth.,vague,2015.0,False
+145,2015,"Management's discussion: 2015 marked the completion of our enterprise-wide digitalization project, implemented across all business units. This represents a significant milestone for the Company.",completion,2015.0,True
+145,2016,Management's discussion: The Company continues to evaluate opportunities in digital technology and artificial intelligence.,vague,2015.0,False
+146,2014,Management's discussion: The Company remains committed to technological innovation and modernization. This represents a significant milestone for the Company.,vague,2015.0,False
+146,2015,"In our annual business review: In 2015, the Company completed implementation of cloud-based infrastructure. The digital transformation initiative was finalized in QQ2 2015.",completion,2015.0,True
+146,2016,Management's discussion: We recognize the importance of digital transformation for future competitiveness.,vague,2015.0,False
+151,2016,Strategic update: The Company remains committed to technological innovation and modernization.,vague,2017.0,False
+151,2017,"Strategic update: 2017 marked the completion of our enterprise-wide digitalization project, implemented across all business units. This represents a significant milestone for the Company.",completion,2017.0,True
+151,2018,In our annual business review: The Company continues to evaluate opportunities in digital technology and artificial intelligence. We believe this positions us well for future growth.,vague,2017.0,False
+152,2015,Strategic update: The Company remains committed to technological innovation and modernization.,vague,2016.0,False
+152,2016,"Strategic update: 2016 marked the completion of our enterprise-wide digitalization project, implemented across all business units. This represents a significant milestone for the Company.",completion,2016.0,True
+152,2017,In our annual business review: The Company continues to evaluate opportunities in digital technology and artificial intelligence. We believe this positions us well for future growth.,vague,2016.0,False
+155,2017,In our annual business review: Management is exploring various technology solutions to enhance operations. Additional details are provided in the technology section.,vague,2018.0,False
+155,2018,"Management's discussion: 2018 marked the completion of our enterprise-wide digitalization project, implemented across all business units. Additional details are provided in the technology section.",completion,2018.0,True
+155,2019,Strategic update: The Board approved and the Company finished deployment of AI-driven systems in August 2018. This represents a significant milestone for the Company.,completion,2018.0,True
+157,2016,"Strategic update: The digitalization program is in progress, having begun in Q1 2017. Additional details are provided in the technology section.",inprogress,2017.0,False
+157,2017,Strategic update: The Board approved and the Company finished deployment of AI-driven systems in August 2017. This represents a significant milestone for the Company.,completion,2017.0,True
+157,2018,Management's discussion: The Company continues to evaluate opportunities in digital technology and artificial intelligence. This represents a significant milestone for the Company.,vague,2017.0,False
+162,2017,In our annual business review: The Company continues to evaluate opportunities in digital technology and artificial intelligence. This represents a significant milestone for the Company.,vague,2018.0,False
+162,2018,"Strategic update: The Company concluded its digital transformation program in 2018, successfully migrating to advanced analytics platforms. This represents a significant milestone for the Company.",completion,2018.0,True
+162,2019,Management's discussion: Digital strategy development is a priority for the organization.,vague,2018.0,False
+164,2015,In our annual business review: The Company continues to evaluate opportunities in digital technology and artificial intelligence. This represents a significant milestone for the Company.,vague,2016.0,False
+164,2016,"Strategic update: The Company concluded its digital transformation program in 2016, successfully migrating to advanced analytics platforms. This represents a significant milestone for the Company.",completion,2016.0,True
+164,2017,Management's discussion: Digital strategy development is a priority for the organization.,vague,2016.0,False
+171,2016,In our annual business review: Digital strategy development is a priority for the organization.,vague,2017.0,False
+171,2017,"In our annual business review: In 2017, the Company completed implementation of cloud-based infrastructure. The digital transformation initiative was finalized in QQ3 2017. Additional details are provided in the technology section.",completion,2017.0,True
+171,2018,Management's discussion: Management is exploring various technology solutions to enhance operations. This represents a significant milestone for the Company.,vague,2017.0,False
+172,2014,"Strategic update: The digitalization program is in progress, having begun in Q3 2015. We believe this positions us well for future growth.",inprogress,2015.0,False
+172,2015,"Management's discussion: Cloud migration was finalized in 2015, replacing legacy IT infrastructure. This represents a significant milestone for the Company.",completion,2015.0,True
+172,2016,Strategic update: The Company continues to evaluate opportunities in digital technology and artificial intelligence. We believe this positions us well for future growth.,vague,2015.0,False
+174,2016,"In our annual business review: The digitalization program is in progress, having begun in Q4 2017. Additional details are provided in the technology section.",inprogress,2017.0,False
+174,2017,Strategic update: The Board approved and the Company finished deployment of AI-driven systems in February 2017. We believe this positions us well for future growth.,completion,2017.0,True
+174,2018,"Strategic update: In 2017, the Company completed implementation of cloud-based infrastructure. The digital transformation initiative was finalized in QQ4 2017. Additional details are provided in the technology section.",completion,2017.0,True
+175,2014,Management's discussion: Management is exploring various technology solutions to enhance operations. This represents a significant milestone for the Company.,vague,2015.0,False
+175,2015,"Management's discussion: 2015 marked the completion of our enterprise-wide digitalization project, implemented across all business units. This represents a significant milestone for the Company.",completion,2015.0,True
+175,2016,Strategic update: The Board approved and the Company finished deployment of AI-driven systems in February 2015. We believe this positions us well for future growth.,completion,2015.0,True
+177,2014,In our annual business review: Digital strategy development is a priority for the organization.,vague,2015.0,False
+177,2015,"Strategic update: In 2015, the Company completed implementation of cloud-based infrastructure. The digital transformation initiative was finalized in QQ4 2015. Additional details are provided in the technology section.",completion,2015.0,True
+177,2016,"2015 marked the completion of our enterprise-wide digitalization project, implemented across all business units. This represents a significant milestone for the Company.",completion,2015.0,True
+180,2017,Management's discussion: The Company remains committed to technological innovation and modernization. We believe this positions us well for future growth.,vague,2018.0,False
+180,2018,"In our annual business review: In 2018, the Company completed implementation of cloud-based infrastructure. The digital transformation initiative was finalized in QQ4 2018. We believe this positions us well for future growth.",completion,2018.0,True
+180,2019,Strategic update: Management is exploring various technology solutions to enhance operations. We believe this positions us well for future growth.,vague,2018.0,False
+181,2015,The Company continues to evaluate opportunities in digital technology and artificial intelligence. This represents a significant milestone for the Company.,vague,2016.0,False
+181,2016,"Management's discussion: In 2016, we completed the rollout of digital tools company-wide, effective from April 2016. We believe this positions us well for future growth.",completion,2016.0,True
+181,2017,The Company continues to evaluate opportunities in digital technology and artificial intelligence. Additional details are provided in the technology section.,vague,2016.0,False
+182,2016,"Management's discussion: The Company is currently advancing its digital transformation initiative, commenced in 2017. This represents a significant milestone for the Company.",inprogress,2017.0,False
+182,2017,"Management's discussion: In 2017, we completed the rollout of digital tools company-wide, effective from November 2017. We believe this positions us well for future growth.",completion,2017.0,True
+182,2018,In our annual business review: The Board approved and the Company finished deployment of AI-driven systems in September 2017. This represents a significant milestone for the Company.,completion,2017.0,True
+183,2015,The Company continues to evaluate opportunities in digital technology and artificial intelligence. Additional details are provided in the technology section.,vague,2016.0,False
+183,2016,"Management's discussion: In 2016, we completed the rollout of digital tools company-wide, effective from November 2016. We believe this positions us well for future growth.",completion,2016.0,True
+183,2017,In our annual business review: The Board approved and the Company finished deployment of AI-driven systems in September 2016. This represents a significant milestone for the Company.,completion,2016.0,True
+185,2016,Strategic update: Management is exploring various technology solutions to enhance operations. This represents a significant milestone for the Company.,vague,2017.0,False
+185,2017,"Cloud migration was finalized in 2017, replacing legacy IT infrastructure. Additional details are provided in the technology section.",completion,2017.0,True
+185,2018,The Company remains committed to technological innovation and modernization. This represents a significant milestone for the Company.,vague,2017.0,False
+187,2017,Management's discussion: We recognize the importance of digital transformation for future competitiveness.,vague,2018.0,False
+187,2018,"2018 marked the completion of our enterprise-wide digitalization project, implemented across all business units. Additional details are provided in the technology section.",completion,2018.0,True
+187,2019,"Management's discussion: In 2018, the Company completed implementation of cloud-based infrastructure. The digital transformation initiative was finalized in QQ1 2018. This represents a significant milestone for the Company.",completion,2018.0,True
+188,2014,Management's discussion: Digital strategy development is a priority for the organization.,vague,2015.0,False
+188,2015,"Strategic update: 2015 marked the completion of our enterprise-wide digitalization project, implemented across all business units. Additional details are provided in the technology section.",completion,2015.0,True
+188,2016,"Strategic update: The Company concluded its digital transformation program in 2015, successfully migrating to advanced analytics platforms.",completion,2015.0,True
+190,2015,The Company remains committed to technological innovation and modernization.,vague,2016.0,False
+190,2016,"Management's discussion: In 2016, the Company completed implementation of cloud-based infrastructure. The digital transformation initiative was finalized in QQ1 2016. This represents a significant milestone for the Company.",completion,2016.0,True
+190,2017,"Management's discussion: The Company concluded its digital transformation program in 2016, successfully migrating to advanced analytics platforms. Additional details are provided in the technology section.",completion,2016.0,True
+195,2016,Strategic update: We recognize the importance of digital transformation for future competitiveness.,vague,2017.0,False
+195,2017,"Management's discussion: 2017 marked the completion of our enterprise-wide digitalization project, implemented across all business units. Additional details are provided in the technology section.",completion,2017.0,True
+195,2018,"The Company concluded its digital transformation program in 2017, successfully migrating to advanced analytics platforms. This represents a significant milestone for the Company.",completion,2017.0,True
+196,2017,In our annual business review: We recognize the importance of digital transformation for future competitiveness. This represents a significant milestone for the Company.,vague,2018.0,False
+196,2018,"In 2018, the Company completed implementation of cloud-based infrastructure. The digital transformation initiative was finalized in QQ4 2018. Additional details are provided in the technology section.",completion,2018.0,True
+196,2019,The Board approved and the Company finished deployment of AI-driven systems in March 2018. We believe this positions us well for future growth.,completion,2018.0,True
+197,2016,"In our annual business review: Digital infrastructure modernization is underway as of 2017, with ongoing deployment across divisions.",inprogress,2017.0,False
+197,2017,"In 2017, the Company completed implementation of cloud-based infrastructure. The digital transformation initiative was finalized in QQ4 2017. Additional details are provided in the technology section.",completion,2017.0,True
+197,2018,The Board approved and the Company finished deployment of AI-driven systems in March 2017. We believe this positions us well for future growth.,completion,2017.0,True
+166,2017,Management is exploring various technology solutions to enhance operations.,vague,,False
+70,2017,Strategic update: The Company remains committed to technological innovation and modernization. We believe this positions us well for future growth.,vague,,False
+68,2017,We recognize the importance of digital transformation for future competitiveness. Additional details are provided in the technology section.,vague,,False
+26,2015,In our annual business review: We recognize the importance of digital transformation for future competitiveness. We believe this positions us well for future growth.,vague,,False
+76,2015,In our annual business review: The Company remains committed to technological innovation and modernization. Additional details are provided in the technology section.,vague,,False
+137,2015,Strategic update: Digital strategy development is a priority for the organization. We believe this positions us well for future growth.,vague,,False
+113,2016,Digital strategy development is a priority for the organization. We believe this positions us well for future growth.,vague,,False
+163,2017,Management's discussion: We recognize the importance of digital transformation for future competitiveness. Additional details are provided in the technology section.,vague,,False
+200,2015,Digital strategy development is a priority for the organization. We believe this positions us well for future growth.,vague,,False
+11,2016,Management's discussion: Digital strategy development is a priority for the organization. This represents a significant milestone for the Company.,vague,,False
+75,2016,In our annual business review: The Company remains committed to technological innovation and modernization. Additional details are provided in the technology section.,vague,,False
+131,2017,In our annual business review: We recognize the importance of digital transformation for future competitiveness.,vague,,False
+156,2015,In our annual business review: The Company remains committed to technological innovation and modernization. This represents a significant milestone for the Company.,vague,,False
+89,2017,Digital strategy development is a priority for the organization. We believe this positions us well for future growth.,vague,,False
+66,2016,Management's discussion: The Company continues to evaluate opportunities in digital technology and artificial intelligence. This represents a significant milestone for the Company.,vague,,False
+101,2016,Strategic update: The Company continues to evaluate opportunities in digital technology and artificial intelligence. Additional details are provided in the technology section.,vague,,False
+73,2016,Management's discussion: Management is exploring various technology solutions to enhance operations. This represents a significant milestone for the Company.,vague,,False
+193,2016,Strategic update: The Company continues to evaluate opportunities in digital technology and artificial intelligence. We believe this positions us well for future growth.,vague,,False
+158,2017,Management's discussion: The Company continues to evaluate opportunities in digital technology and artificial intelligence. This represents a significant milestone for the Company.,vague,,False
+4,2015,Management's discussion: We recognize the importance of digital transformation for future competitiveness. We believe this positions us well for future growth.,vague,,False
+165,2016,Management's discussion: Digital strategy development is a priority for the organization.,vague,,False
+32,2016,Management's discussion: The Company continues to evaluate opportunities in digital technology and artificial intelligence. This represents a significant milestone for the Company.,vague,,False
+98,2015,We recognize the importance of digital transformation for future competitiveness.,vague,,False
+73,2017,Management's discussion: The Company continues to evaluate opportunities in digital technology and artificial intelligence. This represents a significant milestone for the Company.,vague,,False
+86,2015,In our annual business review: Digital strategy development is a priority for the organization. We believe this positions us well for future growth.,vague,,False
+57,2015,Strategic update: Digital strategy development is a priority for the organization.,vague,,False
+66,2015,Strategic update: Management is exploring various technology solutions to enhance operations. Additional details are provided in the technology section.,vague,,False
+127,2015,The Company remains committed to technological innovation and modernization. This represents a significant milestone for the Company.,vague,,False
+83,2016,In our annual business review: The Company remains committed to technological innovation and modernization. Additional details are provided in the technology section.,vague,,False
+186,2017,The Company remains committed to technological innovation and modernization. This represents a significant milestone for the Company.,vague,,False
+102,2017,Digital strategy development is a priority for the organization. Additional details are provided in the technology section.,vague,,False
+25,2015,In our annual business review: Management is exploring various technology solutions to enhance operations. We believe this positions us well for future growth.,vague,,False
+64,2017,Strategic update: Management is exploring various technology solutions to enhance operations. Additional details are provided in the technology section.,vague,,False
+189,2016,The Company remains committed to technological innovation and modernization.,vague,,False
+46,2015,In our annual business review: Management is exploring various technology solutions to enhance operations. Additional details are provided in the technology section.,vague,,False
+2,2017,Management's discussion: We recognize the importance of digital transformation for future competitiveness. We believe this positions us well for future growth.,vague,,False
+176,2015,In our annual business review: Digital strategy development is a priority for the organization.,vague,,False
+194,2017,Strategic update: We recognize the importance of digital transformation for future competitiveness.,vague,,False
+66,2017,Management's discussion: The Company continues to evaluate opportunities in digital technology and artificial intelligence. This represents a significant milestone for the Company.,vague,,False
+44,2016,Strategic update: Management is exploring various technology solutions to enhance operations. This represents a significant milestone for the Company.,vague,,False
+48,2015,We recognize the importance of digital transformation for future competitiveness. This represents a significant milestone for the Company.,vague,,False
+2,2015,In our annual business review: Management is exploring various technology solutions to enhance operations. We believe this positions us well for future growth.,vague,,False
+92,2017,In our annual business review: The Company remains committed to technological innovation and modernization. We believe this positions us well for future growth.,vague,,False
+135,2015,Management's discussion: The Company continues to evaluate opportunities in digital technology and artificial intelligence. We believe this positions us well for future growth.,vague,,False
+27,2016,Digital strategy development is a priority for the organization. Additional details are provided in the technology section.,vague,,False
+189,2015,Management's discussion: We recognize the importance of digital transformation for future competitiveness.,vague,,False
+167,2016,Management is exploring various technology solutions to enhance operations.,vague,,False
+170,2017,In our annual business review: Digital strategy development is a priority for the organization.,vague,,False
+41,2016,In our annual business review: Management is exploring various technology solutions to enhance operations.,vague,,False
+21,2015,Digital strategy development is a priority for the organization. We believe this positions us well for future growth.,vague,,False

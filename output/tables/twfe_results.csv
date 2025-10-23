@@ -1,0 +1,2 @@
+Specification,Coefficient,Std_Error,T_Stat,P_Value,CI_Lower,CI_Upper,N_Obs,R_Squared
+TWFE,0.1851,0.0204,9.0842,0.0000,0.1449,0.2253,2000,0.0000
