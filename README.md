@@ -1,10 +1,10 @@
 # Firm Digitalization Study
 
-Applied Econometrics Code Sample for Predoctoral Research Position Applications
+Applied Econometrics Code Sample for Research Position Applications
 
 ## Overview
 
-This repository demonstrates end-to-end empirical research capabilities, combining causal inference, structural estimation, and geospatial analysis. The project analyzes corporate digital technology adoption using synthetic panel data.
+This repository demonstrates end-to-end empirical research capabilities, combining causal inference, structural estimation, and geospatial analysis.
 
 ## Key Results
 
@@ -20,37 +20,77 @@ This repository demonstrates end-to-end empirical research capabilities, combini
 | +3 | 0.306 | 0.045 | 0.000 |
 | +4 | 0.382 | 0.057 | 0.000 |
 
-![Event Study Results](output/figures/event_study_log_revenue.png)
+**Interpretation**: No significant pre-trends validate parallel trends assumption. Treatment effects grow from 8.6% at adoption to 38.2% after four years.
 
-### Geographic Distribution of Economic Indicators
+<p align="center">
+  <img src="output/figures/event_study_log_revenue.png" width="800">
+</p>
 
-#### Digital Technology Adoption Rates
-![Digital Adoption Map](output/figures/map_digital_adoption.png)
+## Geographic Distribution of Economic Indicators
 
-#### GDP per Capita by State
-![GDP per Capita Map](output/figures/map_gdp_per_capita.png)
+### Digital Technology Adoption Rates
+<p align="center">
+  <img src="output/figures/map_digital_adoption.png" width="750">
+</p>
 
-#### Technology Employment Share
-![Tech Employment Map](output/figures/map_tech_employment.png)
+### GDP per Capita by State
+<p align="center">
+  <img src="output/figures/map_gdp_per_capita.png" width="750">
+</p>
 
-#### R&D Intensity
-![R&D Intensity Map](output/figures/map_rd_intensity.png)
+### Technology Employment Share
+<p align="center">
+  <img src="output/figures/map_tech_employment.png" width="750">
+</p>
 
-#### Multi-Panel Economic Indicators
-![Economic Indicators Panel](output/figures/economic_indicators_panel.png)
+### R&D Intensity
+<p align="center">
+  <img src="output/figures/map_rd_intensity.png" width="750">
+</p>
 
-#### Firm Headquarters and Adoption Status
-![Firm Locations](output/figures/map_firm_locations.png)
+### Multi-Panel Economic Indicators
+<p align="center">
+  <img src="output/figures/economic_indicators_panel.png" width="900">
+</p>
 
-### Interactive Maps
+### Economic Comparison: Digital Adoption vs GDP
+<p align="center">
+  <img src="output/figures/economic_comparison.png" width="900">
+</p>
 
-Explore the data through interactive web-based visualizations:
+### Firm Headquarters and Adoption Status
+<p align="center">
+  <img src="output/figures/map_firm_locations.png" width="750">
+</p>
 
-- [Digital Adoption Map (Interactive)](https://github.com/xmwu0124/firm-digitalization-study/blob/main/output/figures/interactive_digital_adoption.html)
-- [GDP per Capita (Interactive)](https://github.com/xmwu0124/firm-digitalization-study/blob/main/output/figures/interactive_gdp_per_capita.html)
-- [Multiple Indicators (Interactive)](https://github.com/xmwu0124/firm-digitalization-study/blob/main/output/figures/interactive_multi_indicators.html)
-- [Firm Locations with Clustering (Interactive)](https://github.com/xmwu0124/firm-digitalization-study/blob/main/output/figures/interactive_firm_locations.html)
-- [Maps Index Page](https://github.com/xmwu0124/firm-digitalization-study/blob/main/output/figures/maps_index.html)
+## Interactive Maps
+
+> **Note**: GitHub cannot render HTML files directly for security reasons. To view the interactive maps:
+> 1. Clone this repository locally
+> 2. Navigate to `output/figures/`
+> 3. Open any `interactive_*.html` file in your web browser
+
+**Available Interactive Maps**:
+- `interactive_digital_adoption.html` - Hover over states for detailed adoption rates
+- `interactive_gdp_per_capita.html` - Interactive GDP visualization with tooltips
+- `interactive_multi_indicators.html` - Toggle between 4 economic indicators
+- `interactive_firm_locations.html` - Firm clusters, heatmap, and individual markers
+- `maps_index.html` - Navigation hub for all interactive maps
+
+**Features**:
+- Zoom and pan controls
+- Hover tooltips with detailed statistics
+- Layer toggles for multiple indicators
+- Marker clustering for firm locations
+- Density heatmaps
+- Fullscreen mode
+
+**To view locally**:
+```bash
+git clone https://github.com/xmwu0124/firm-digitalization-study.git
+cd firm-digitalization-study/output/figures
+open interactive_multi_indicators.html
+```
 
 ## Methodology
 
@@ -67,8 +107,8 @@ Explore the data through interactive web-based visualizations:
 - Counterfactual policy simulations
 
 ### Geospatial Analysis
-- Real US Census Bureau state boundaries (2023)
-- Choropleth maps of economic indicators
+- Real US Census Bureau state boundaries (TIGER/Line 2023)
+- Professional choropleth maps with proper projections
 - Interactive HTML maps with Folium
 - Firm location clustering and spatial patterns
 
@@ -76,7 +116,7 @@ Explore the data through interactive web-based visualizations:
 
 - **Python 3.9+**: pandas, numpy, scipy
 - **Econometrics**: pyfixest, statsmodels
-- **Optimization**: JAX (JIT compilation)
+- **Optimization**: JAX (JIT compilation, automatic differentiation)
 - **Geospatial**: geopandas, shapely, folium
 - **Visualization**: matplotlib, seaborn
 
@@ -107,3 +147,9 @@ GitHub: [@xmwu0124](https://github.com/xmwu0124)
 ## License
 
 MIT License
+
+---
+
+**Data Sources**: US Census Bureau TIGER/Line Shapefiles (2023)
+
+**Note**: This repository uses synthetic data for demonstration. The methodological framework is production-ready and applicable to real-world datasets.
