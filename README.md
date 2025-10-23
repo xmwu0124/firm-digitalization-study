@@ -1,6 +1,6 @@
 # Firm Digitalization Study
 
-Applied Econometrics Code Sample for Research Position Applications
+Applied Econometrics Code Sample for Predoctoral Research Position Applications
 
 ## Overview
 
