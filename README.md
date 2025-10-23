@@ -65,21 +65,23 @@ This repository demonstrates end-to-end empirical research capabilities, combini
 
 ## Interactive Maps
 
-**Click to view interactive maps** (opens in new tab):
+**Explore Interactive Visualizations:**
 
-- **[Digital Adoption Map (Interactive)](https://htmlpreview.github.io/?https://github.com/xmwu0124/firm-digitalization-study/blob/main/output/figures/interactive_digital_adoption.html)** - Hover over states for detailed adoption rates
+- **[Digital Adoption Map](https://xmwu0124.github.io/firm-digitalization-study/output/figures/interactive_digital_adoption.html)** - Hover over states for detailed adoption rates
 
-- **[GDP per Capita (Interactive)](https://htmlpreview.github.io/?https://github.com/xmwu0124/firm-digitalization-study/blob/main/output/figures/interactive_gdp_per_capita.html)** - Interactive GDP visualization with tooltips
+- **[GDP per Capita Map](https://xmwu0124.github.io/firm-digitalization-study/output/figures/interactive_gdp_per_capita.html)** - Interactive GDP visualization with tooltips
 
-- **[Multiple Indicators (Interactive)](https://htmlpreview.github.io/?https://github.com/xmwu0124/firm-digitalization-study/blob/main/output/figures/interactive_multi_indicators.html)** - Toggle between 4 economic indicators
+- **[Multiple Indicators Map](https://xmwu0124.github.io/firm-digitalization-study/output/figures/interactive_multi_indicators.html)** - Toggle between 4 economic indicators
 
-- **[Firm Locations with Clustering (Interactive)](https://htmlpreview.github.io/?https://github.com/xmwu0124/firm-digitalization-study/blob/main/output/figures/interactive_firm_locations.html)** - Explore firm headquarters with clusters and heatmap
+- **[Firm Locations Map](https://xmwu0124.github.io/firm-digitalization-study/output/figures/interactive_firm_locations.html)** - Explore firm headquarters with clusters and heatmap
 
-- **[Maps Navigation Hub](https://htmlpreview.github.io/?https://github.com/xmwu0124/firm-digitalization-study/blob/main/output/figures/maps_index.html)** - Central hub for all interactive visualizations
+- **[Maps Hub](https://xmwu0124.github.io/firm-digitalization-study/output/figures/maps_index.html)** - Central navigation for all visualizations
 
-**Interactive Features**: Zoom/pan controls, hover tooltips, layer toggles, marker clustering, density heatmaps, fullscreen mode
+> **Note**: Enable GitHub Pages: Repo Settings → Pages → Source: "main" branch, "/ (root)" folder → Save. Wait 2 minutes for deployment.
 
-**Alternative viewing**:
+**Interactive Features**: Zoom/pan, hover tooltips, layer toggles, marker clustering, heatmaps, fullscreen
+
+**View Locally:**
 ```bash
 git clone https://github.com/xmwu0124/firm-digitalization-study.git
 cd firm-digitalization-study/output/figures
@@ -123,13 +125,7 @@ pip install -r requirements.txt
 
 ## Usage
 ```bash
-# Complete pipeline
 python src/run_all.py
-
-# Individual components
-python src/03_analysis/did_analysis.py
-python src/03_analysis/geographic_visualization.py
-python src/03_analysis/interactive_map.py
 ```
 
 ## Author
@@ -145,4 +141,4 @@ MIT License
 
 **Data Sources**: US Census Bureau TIGER/Line Shapefiles (2023)
 
-**Note**: This repository uses synthetic data for demonstration. The methodological framework is production-ready and applicable to real-world datasets.
+**Note**: Synthetic data for demonstration. Methodology is production-ready for real-world datasets.
